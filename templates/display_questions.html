@@ -1,0 +1,35 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+    <title>Question Page</title>
+    {% endblock %}
+
+{% block body_block %}
+{% if username %}
+<h1 class="font-italic">Welcome {{username}}</h1>
+
+
+<div class="btn-group mb-2" role="group">
+    <a href="{% url 'Answer_the_Questions' %}" class="btn btn-info">Answer the Questions</a>
+    
+    <a href="{% url 'display_answers' %}" class="btn btn-dark">Display the Answers</a>
+</div><br>
+    <table class="table table-hover bg-dark">
+        <tr class="text-light">
+            <th>Posted By</th>
+            <th>Questions</th>
+        </tr>
+
+        {% for qo in Questions %}
+        <tr class="text-light">
+            <td>{{qo.username}}</td>
+            <td>{{qo.question}}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+    
+    <a href="{% url 'Home' %}">Back</a>
+{% endif %}
+{% endblock %}
